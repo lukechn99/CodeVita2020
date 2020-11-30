@@ -2,6 +2,7 @@
 # can be represented as a graph
 
 import sys
+import unittest
 
 # creates a list of numbers followed by their biggest factor
 def factorList(n):
@@ -16,8 +17,6 @@ def factorList(n):
 def solve(n, m):
     factorsN = factorList(int(n))
     factorsM = factorList(int(m))
-    print(factorsN)
-    print(factorsM)
     for i in range(len(factorsN)):
         for j in range(len(factorsM)):
             if factorsN[i] == factorsM[j]:
@@ -30,5 +29,22 @@ def main():
         sys.exit(1)
     print(solve(sys.argv[1], sys.argv[2]))
     
+class Test(unittest.TestCase):
+    def test_stock1(self):
+        self.assertEqual(solve(18, 19), 4)
+    def test_stock2(self):
+        self.assertEqual(solve(9, 9), 0)
+    def test_stock3(self):
+        self.assertEqual(solve(4, 2), 1)
+    # def test_zero(self):
+    #     self.assertEqual()
+    # def test_split(self):
+    #     s = 'hello world'
+    #     self.assertEqual(s.split(), ['hello', 'world'])
+    #     # check that s.split fails when the separator is not a string
+    #     with self.assertRaises(TypeError):
+    #         s.split(2)
+    
 if __name__=="__main__": 
-    main()
+    # main()
+    unittest.main()
